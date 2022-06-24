@@ -6,7 +6,11 @@ const AnswersList = props =>(
     <ul className={style.AnswersList}>
         {props.answers.map((answer, index) => {
             return(
-                <AnswerItem answer={answer} />
+                <AnswerItem 
+                key={index}
+                answer={answer}
+                onAnswerClick ={props.onAnswerClick}
+                />
             )
 
         })}
