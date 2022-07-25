@@ -73,6 +73,20 @@ class Quiz extends Component {
                 answerState: {[answerId]: 'error'},
                 results
             })
+            const timeout = window.setTimeout(() =>{
+                if(this.isQuizFinished()){
+                    this.setState({
+                        isFinished: true
+                    })
+                } else {
+                    this.setState({
+                        activeQuestion: this.state.activeQuestion + 1,
+                        answerState: null
+                    })
+                }
+                window.clearTimeout(timeout)
+
+            }, 1000)
         }
     }
 
