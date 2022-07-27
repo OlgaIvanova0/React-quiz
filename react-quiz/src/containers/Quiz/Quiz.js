@@ -52,43 +52,35 @@ class Quiz extends Component {
                 answerState: {[answerId]: 'success'},
                 results
             })
+            this.isTimeout()
 
-            const timeout = window.setTimeout(() =>{
-                if(this.isQuizFinished()){
-                    this.setState({
-                        isFinished: true
-                    })
-                } else {
-                    this.setState({
-                        activeQuestion: this.state.activeQuestion + 1,
-                        answerState: null
-                    })
-                }
-                window.clearTimeout(timeout)
 
-            }, 1000)
         } else {
             results[question.id] = 'error'
             this.setState({
                 answerState: {[answerId]: 'error'},
                 results
             })
-            const timeout = window.setTimeout(() =>{
-                if(this.isQuizFinished()){
-                    this.setState({
-                        isFinished: true
-                    })
-                } else {
-                    this.setState({
-                        activeQuestion: this.state.activeQuestion + 1,
-                        answerState: null
-                    })
-                }
-                window.clearTimeout(timeout)
-
-            }, 1000)
+            this.isTimeout()
         }
     }
+
+    isTimeout(){
+        return(
+            window.setTimeout(() =>{
+        if(this.isQuizFinished()){
+            this.setState({
+                isFinished: true
+            })
+        } else {
+            this.setState({
+                activeQuestion: this.state.activeQuestion + 1,
+                answerState: null
+            })
+        }
+        window.clearTimeout(this.isTimeout)
+
+    }, 1000))}
 
     isQuizFinished(){
         return this.state.activeQuestion + 1 === this.state.quiz.length
