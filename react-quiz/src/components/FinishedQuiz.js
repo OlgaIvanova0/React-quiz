@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import style from './FinishedQuiz.module.css'
 import Button from "./UI/Button";
 
@@ -30,7 +31,9 @@ const FinishedQuiz = props =>{
             <p>Правильно {successCount} из {props.quiz.length}</p>
             <div>
                 <Button onClick={props.onRetry} type='Btn-primary'>Повторить</Button>
-                <Button type='Btn-success'>Перейти в список тестов</Button>
+                <Link to='/'>
+                   <Button type='Btn-success'>Перейти в список тестов</Button>
+                </Link>
             </div>
         </div>
     )
