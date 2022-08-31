@@ -8,14 +8,15 @@ import QuizCreator from './components/QuizCreator/QuizCreator';
 import QuizList from './components/QuizList/QuizList';
 
 class App extends Component {
+  
   render(){
     return(
       <Layout>
         <Routes>
           <Route path='/auth' element={<Auth/>} />
           <Route path='/quiz-creator' element={<QuizCreator/>} />
-          <Route path='/quiz/:id' element={<Quiz/>} />
-          <Route path='/' element={<QuizList/>} />
+          <Route path='/quiz/:id' element={<Quiz />} />
+          <Route path='/' element={<QuizList />} />
         </Routes>
       </Layout>
     )
